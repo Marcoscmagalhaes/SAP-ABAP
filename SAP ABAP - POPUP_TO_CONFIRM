@@ -1,0 +1,25 @@
+REPORT Z_TESTE_2.
+
+CONSTANTS: cc_sim TYPE c VALUE '1'.
+
+DATA:
+      lc_result     TYPE c,
+      ls_pergunta   TYPE string,
+      lc_tpamb      TYPE c.
+
+CONCATENATE 'text-001'
+            'text-002'
+            'text-003'
+            INTO ls_pergunta SEPARATED BY space.
+
+  CALL FUNCTION 'POPUP_TO_CONFIRM'
+    EXPORTING
+      titlebar       = text-055
+      text_question  = ls_pergunta
+      text_button_1  = 'Ja'(012)
+      text_button_2  = 'Nein'(013)
+      default_button = '2'
+    IMPORTING
+      answer         = lc_result.
+
+BREAK-POINT.
